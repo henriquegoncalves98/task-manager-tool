@@ -2,7 +2,6 @@
 
 ### Project Setup (Run in terminal after cloning the project)
 ` mv .env.example .env `
-[Uploading Task-manager-tool.postman_collection.json…]()
 
 `yarn install`
 
