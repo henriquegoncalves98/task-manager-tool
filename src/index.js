@@ -5,7 +5,7 @@ const router = require('./api');
 const logger = require('./logger');
 const { connectQueue } = require('../publisher');
 
-const PORT = process.env.PORT || 9999;
+const PORT = process.env.PORT || 3000;
 const app = express();
 // connect rabbitMQ queue
 connectQueue();

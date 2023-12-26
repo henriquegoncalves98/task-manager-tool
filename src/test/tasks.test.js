@@ -1,10 +1,13 @@
 require('dotenv').config();
 const request = require('supertest');
 const app = require('../index');
-const { addTaskData, updateTaskData } = require('../utils/task.test.data');
+const { addTaskData, updateTaskData, techLoginData, managerLoginData } = require('../utils/task.test.data');
 
-const techToken = 'GET YOUR TOKEN FROM [POST] /api/v1/users/login  - with tech email and password in body';
-const managerToken = 'GET YOUR TOKEN FROM [POST] /api/v1/users/login  - with manager email and password in body';
+let techToken = 'GET YOUR TOKEN FROM [POST] /api/v1/users/login  - with tech email and password in body';
+request(app).post('/api/v1/users/login').send(techLoginData).then(({ body }) => { techToken = body.token; });
+let managerToken = 'GET YOUR TOKEN FROM [POST] /api/v1/users/login  - with manager email and password in body';
+request(app).post('/api/v1/users/login').send(managerLoginData).then(({ body }) => { managerToken = body.token; });
+
 let taskId = null;
 
 describe('Checking authorization middleware', () => {

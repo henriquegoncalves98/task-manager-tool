@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const amqp = require('amqplib');
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const RECEIVER_PORT = process.env.RECEIVER_PORT || 3001;
 
 let channel, connection;
 
@@ -13,7 +14,7 @@ const queueName = 'notification-queue';
 connectToRabbitMQ();
 async function connectToRabbitMQ () {
   try {
-    connection = await amqp.connect('amqp://localhost:5672');
+    connection = await amqp.connect(process.env.AMQP_URL || 'amqp://localhost:5672');
     channel = await connection.createChannel();
 
     connectToQueue();
@@ -45,4 +46,4 @@ async function connectToQueue () {
   );
 }
 
-app.listen(PORT, () => console.log('Notification Server running at port ' + PORT));
+app.listen(RECEIVER_PORT, () => console.log('Notification Server running at port ' + RECEIVER_PORT));

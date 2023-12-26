@@ -13,7 +13,7 @@ exports.up = function (knex) {
       table.string('title').notNullable();
       table.string('summary', 2500).notNullable();
       table.integer('user_id').unsigned().notNullable();
-      table.foreign('user_id').references('id').inTable('users');
+      table.foreign('user_id').references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
       table.timestamps(true, true);
     });
 };

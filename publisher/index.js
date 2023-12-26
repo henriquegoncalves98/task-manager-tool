@@ -1,3 +1,4 @@
+require('dotenv').config();
 const amqp = require('amqplib');
 let channel, connection;
 
@@ -6,7 +7,7 @@ const exchangeType = 'fanout';
 
 const connectQueue = async () => {
   try {
-    connection = await amqp.connect('amqp://localhost:5672');
+    connection = await amqp.connect(process.env.AMQP_URL || 'amqp://localhost:5672');
     channel = await connection.createChannel();
 
     process.once('SIGINT', async () => {

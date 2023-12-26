@@ -11,6 +11,8 @@ exports.seed = async function (knex) {
     { id: 1, email: faker.internet.email().toLowerCase(), password: hashPassword, role: 'tech', name: faker.person.fullName() },
     { id: 2, email: faker.internet.email().toLowerCase(), password: hashPassword, role: 'tech', name: faker.person.fullName() },
     { id: 3, email: faker.internet.email().toLowerCase(), password: hashPassword, role: 'tech', name: faker.person.fullName() },
-    { id: 4, email: faker.internet.email().toLowerCase(), password: hashPassword, role: 'manager', name: faker.person.fullName() }
+    { id: 4, email: 'test_tech@gmail.com', password: hashPassword, role: 'tech', name: faker.person.fullName() },
+    { id: 5, email: faker.internet.email().toLowerCase(), password: hashPassword, role: 'manager', name: faker.person.fullName() },
+    { id: 6, email: 'test_manager@gmail.com', password: hashPassword, role: 'manager', name: faker.person.fullName() }
   ]);
 };

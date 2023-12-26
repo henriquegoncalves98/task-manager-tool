@@ -49,6 +49,12 @@ router.put('/:id', onlyTech, async (req, res) => {
   try {
     const { title, summary, date } = req.body;
     const { id } = req.params;
+
+    // Validate user can access this task
+    if (!(await Task.findBy({ id, user_id: req.user_id }))) {
+      return res.status(403).json({ message: 'This user is not authorized to access correspondent task' });
+    }
+
     // Validate user input
     if (!(title && summary && date)) {
       return res.status(400).json({ message: 'Title, Summary and Date input is required' });
