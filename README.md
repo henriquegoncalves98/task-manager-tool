@@ -10,7 +10,7 @@
 
 `docker-compose up`
 
-## To start testings
+## To start testing
 
 - I advise to use [Postman](https://www.postman.com/)
 - Start by login the tech and manager default test users with -> POST http://localhost:3000/api/v1/users/login (body must have email and password check in src/db/seeds/01-users.js) and retrieve the auth tokens to use as "Authorization" headers for the rest of the tasks requests (check src/api/tasks.js)
